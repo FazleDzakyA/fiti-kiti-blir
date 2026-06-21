@@ -13,7 +13,6 @@
   <!-- MediaPipe CDNs -->
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
 
   <style>
     /* CSS Variables & Theme Setup */
@@ -1021,7 +1020,7 @@
   </div>
 
   <!-- Background Music Element -->
-  <audio id="bg-music" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+  <audio id="bg-music" loop src="foto-kita-blur.mp3"></audio>
 
   <!-- Header -->
   <header>
@@ -1044,9 +1043,9 @@
         </svg>
       </button>
       <select id="select-track" class="music-select">
+        <option value="foto-kita-blur.mp3">Foto Kita Blur (Sal Priadi)</option>
         <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">Cyber Chill</option>
         <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">Neon Lofi</option>
-        <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3">Lily Ambient</option>
       </select>
       <div class="music-equalizer">
         <div class="bar"></div>
@@ -1369,7 +1368,7 @@
 
     async function initializeAIModels() {
       try {
-        updateProgress(15, "Memuat library deteksi tangan...");
+        updateProgress(30, "Memuat library deteksi tangan...");
         
         // Setup Hands Model
         handsModel = new Hands({
@@ -1386,24 +1385,6 @@
         handsModel.onResults((results) => {
           latestHandResults = results;
           processGestureClassification();
-        });
-
-        updateProgress(45, "Membuat sensor kontur wajah...");
-
-        // Setup Face Mesh Model
-        faceMeshModel = new FaceMesh({
-          locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`
-        });
-
-        faceMeshModel.setOptions({
-          maxNumFaces: 2,
-          refineLandmarks: false,
-          minDetectionConfidence: 0.6,
-          minTrackingConfidence: 0.6
-        });
-
-        faceMeshModel.onResults((results) => {
-          latestFaceResults = results;
         });
 
         updateProgress(75, "Melakukan handshake AI...");
@@ -1694,11 +1675,8 @@
       while (cameraActive) {
         if (!isCameraPaused && stream && !video.paused && !video.ended) {
           try {
-            // Process the current video frame asynchronously through both models
-            await Promise.all([
-              handsModel.send({ image: video }),
-              faceMeshModel.send({ image: video })
-            ]);
+            // Process the current video frame through the hands model
+            await handsModel.send({ image: video });
             
             // Calculate real AI processing FPS
             calculateFPS();
@@ -1870,57 +1848,35 @@
           ctx.scale(-1, 1);
         }
 
-        // 1. Draw raw video feed onto canvas (always normal, we blur faces selectively later)
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-        // 2. Loop over all faces to apply blur (if peace sign is active) and gather points for HUD
-        const allFacesData = [];
-        if (latestFaceResults && latestFaceResults.multiFaceLandmarks && latestFaceResults.multiFaceLandmarks.length > 0) {
-          for (const landmarks of latestFaceResults.multiFaceLandmarks) {
-            const faceOvalIndices = [
-              10, 338, 297, 332, 284, 251, 389, 356, 454, 323, 361, 288, 397, 365, 379, 378, 400, 377, 152, 148, 176, 149, 150, 136, 172, 58, 132, 93, 234, 127, 162, 21, 54, 103, 67, 109
-            ];
-
-            let faceMinX = Infinity, faceMinY = Infinity, faceMaxX = -Infinity, faceMaxY = -Infinity;
-            const facePoints = faceOvalIndices.map(idx => {
-              const x = landmarks[idx].x * canvas.width;
-              const y = landmarks[idx].y * canvas.height;
-              
-              if (x < faceMinX) faceMinX = x;
-              if (y < faceMinY) faceMinY = y;
-              if (x > faceMaxX) faceMaxX = x;
-              if (y > faceMaxY) faceMaxY = y;
-
-              return { x, y };
-            });
-
-            allFacesData.push({
-              landmarks,
-              facePoints,
-              minX: faceMinX,
-              minY: faceMinY,
-              maxX: faceMaxX,
-              maxY: faceMaxY
-            });
-
-            // If peace sign is active, blur this specific face
-            if (isPeaceSignActive) {
-              drawBlurredFace(ctx, facePoints, 35);
-            }
+        // 1. Draw raw video feed onto canvas (with soft overall blur if gesture active, normal otherwise)
+        if (isPeaceSignActive) {
+          if ('filter' in ctx) {
+            ctx.filter = 'blur(10px)'; // Soft overall blur (10px instead of heavy 35px)
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            ctx.filter = 'none';
+          } else {
+            // Fallback for browsers lacking context.filter support (e.g. older iOS/Safari)
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = 64;
+            tempCanvas.height = 36;
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCtx.drawImage(video, 0, 0, 64, 36);
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'medium';
+            ctx.drawImage(tempCanvas, 0, 0, 64, 36, 0, 0, canvas.width, canvas.height);
           }
+        } else {
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
         }
 
-        // 3. Save snapshot canvas image for final photo download (clean: has blur but NO HUD overlay lines)
+        // 2. Save snapshot canvas image for final photo download (clean: has blur but NO HUD overlay lines)
         window.cleanSnapshotCanvas = document.createElement('canvas');
         window.cleanSnapshotCanvas.width = canvas.width;
         window.cleanSnapshotCanvas.height = canvas.height;
         const snapCtx = window.cleanSnapshotCanvas.getContext('2d');
         snapCtx.drawImage(canvas, 0, 0);
 
-        // 4. Draw HUD overlays (wireframe and scanner) ON TOP of main preview only
-        for (const face of allFacesData) {
-          drawHUDOverlay(face.landmarks, face.facePoints, face.minX, face.minY, face.maxX, face.maxY);
-        }
+        // 3. HUD drawing removed per user request ("ga ada animasi di wajah")
 
         ctx.restore();
       }
