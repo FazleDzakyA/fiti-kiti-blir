@@ -1541,7 +1541,7 @@
       checkFlashSupport();
     }
 
-    // Dynamic Badge showing sensor state in preview
+     // Dynamic Badge showing sensor state in preview
     function updateBlurStateBadge() {
       if (isPeaceSignActive) {
         blurBadge.className = "blur-indicator indicator-active";
@@ -1550,7 +1550,6 @@
         statusBlur.className = "status-value glow-green";
         statusGesture.textContent = "✌️ Peace Detected";
         statusGesture.className = "status-value glow-green";
-        showToast("Gesture ✌️ Terdeteksi: Sensor Blur Aktif");
       } else {
         blurBadge.className = "blur-indicator indicator-inactive";
         blurBadgeText.textContent = "Blur Nonaktif";
