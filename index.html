@@ -18,14 +18,15 @@
   <style>
     /* CSS Variables & Theme Setup */
     :root {
-      --primary: #80cbc4;       /* Green Mint */
+      --primary: #ff69b4;       /* Hot Pink */
       --secondary: #4fc3f7;     /* Light Blue */
-      --dark-bg: #121824;
-      --glass-bg: rgba(25, 30, 45, 0.65);
-      --glass-border: rgba(255, 255, 255, 0.1);
+      --accent: #80cbc4;        /* Green Mint */
+      --dark-bg: #120a13;       /* Deep Plum Black */
+      --glass-bg: rgba(30, 15, 25, 0.65); /* Pink-tinted glass */
+      --glass-border: rgba(255, 105, 180, 0.15);
       --text-white: #ffffff;
-      --text-gray: #b0bec5;
-      --neon-shadow: 0 0 15px rgba(128, 203, 196, 0.6);
+      --text-gray: #e0b0d0;     /* Pinkish gray */
+      --neon-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
       --neon-blue-shadow: 0 0 15px rgba(79, 195, 247, 0.6);
       --border-radius: 25px;
     }
@@ -49,13 +50,13 @@
       position: relative;
     }
 
-    /* SVG Lily Flower Watermark Backgrounds */
+    /* SVG Sakura Flower Watermark Backgrounds */
     .bg-lily {
       position: absolute;
       pointer-events: none;
       z-index: 0;
       opacity: 0.12;
-      filter: drop-shadow(0 0 10px rgba(128, 203, 196, 0.4));
+      filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.4));
       animation: float-lily 15s ease-in-out infinite alternate;
     }
 
@@ -143,7 +144,7 @@
       fill: none;
       stroke: var(--primary);
       stroke-width: 1.5;
-      filter: drop-shadow(0 0 8px rgba(128, 203, 196, 0.8));
+      filter: drop-shadow(0 0 8px rgba(255, 105, 180, 0.8));
       animation: pulse-glowing 2s ease-in-out infinite alternate;
     }
 
@@ -156,7 +157,7 @@
       background: linear-gradient(135deg, #ffffff 0%, var(--primary) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 10px rgba(128, 203, 196, 0.3);
+      text-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
     }
 
     .loader-progress-bar {
@@ -197,8 +198,8 @@
     }
 
     @keyframes pulse-glowing {
-      0% { transform: scale(0.9); opacity: 0.7; filter: drop-shadow(0 0 3px rgba(128, 203, 196, 0.5)); }
-      100% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 15px rgba(128, 203, 196, 0.9)); }
+      0% { transform: scale(0.9); opacity: 0.7; filter: drop-shadow(0 0 3px rgba(255, 105, 180, 0.5)); }
+      100% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.9)); }
     }
 
     /* Start / Landing Screen Overlay */
@@ -238,7 +239,7 @@
       stroke: var(--primary);
       stroke-width: 1.5;
       fill: none;
-      filter: drop-shadow(0 0 12px rgba(128, 203, 196, 0.7));
+      filter: drop-shadow(0 0 12px rgba(255, 105, 180, 0.7));
       margin-bottom: 20px;
     }
 
@@ -281,7 +282,7 @@
 
     .btn-start:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 25px rgba(128, 203, 196, 0.9);
+      box-shadow: 0 0 25px rgba(255, 105, 180, 0.9);
     }
 
     .btn-start:active {
@@ -311,7 +312,7 @@
       stroke: var(--primary);
       stroke-width: 2;
       fill: none;
-      filter: drop-shadow(0 0 6px rgba(128, 203, 196, 0.6));
+      filter: drop-shadow(0 0 6px rgba(255, 105, 180, 0.6));
     }
 
     .header-logo h1 {
@@ -380,10 +381,10 @@
     }
 
     .indicator-active {
-      background: rgba(128, 203, 196, 0.15);
+      background: rgba(255, 105, 180, 0.15);
       border: 1px solid var(--primary);
       color: var(--primary);
-      box-shadow: 0 0 15px rgba(128, 203, 196, 0.3);
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
       animation: pulse-neon 1.5s infinite alternate;
     }
 
@@ -410,8 +411,8 @@
     }
 
     @keyframes pulse-neon {
-      0% { border-color: rgba(128, 203, 196, 0.4); box-shadow: 0 0 5px rgba(128, 203, 196, 0.2); }
-      100% { border-color: rgba(128, 203, 196, 1); box-shadow: 0 0 20px rgba(128, 203, 196, 0.5); }
+      0% { border-color: rgba(255, 105, 180, 0.4); box-shadow: 0 0 5px rgba(255, 105, 180, 0.2); }
+      100% { border-color: rgba(255, 105, 180, 1); box-shadow: 0 0 20px rgba(255, 105, 180, 0.5); }
     }
 
     @keyframes blink {
@@ -450,7 +451,7 @@
       fill: none;
       stroke: var(--primary);
       stroke-width: 1.5;
-      filter: drop-shadow(0 0 10px rgba(128, 203, 196, 0.6));
+      filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.6));
       margin-bottom: 15px;
     }
 
@@ -529,7 +530,7 @@
 
     .status-value.glow-green {
       color: var(--primary);
-      text-shadow: 0 0 5px rgba(128, 203, 196, 0.5);
+      text-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
     }
 
     /* Buttons Controls Row */
@@ -568,7 +569,7 @@
     }
 
     .btn-circle.active {
-      background: rgba(128, 203, 196, 0.15);
+      background: rgba(255, 105, 180, 0.15);
       border-color: var(--primary);
       color: var(--primary);
       box-shadow: var(--neon-shadow);
@@ -604,14 +605,14 @@
       justify-content: center;
       align-items: center;
       color: #0c101b;
-      box-shadow: var(--neon-shadow), 0 0 0 4px rgba(128, 203, 196, 0.15);
+      box-shadow: var(--neon-shadow), 0 0 0 4px rgba(255, 105, 180, 0.15);
       z-index: 10;
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .btn-capture:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(128, 203, 196, 0.8), 0 0 0 6px rgba(128, 203, 196, 0.25);
+      box-shadow: 0 0 30px rgba(255, 105, 180, 0.8), 0 0 0 6px rgba(255, 105, 180, 0.25);
     }
 
     .btn-capture:active {
@@ -769,7 +770,7 @@
     }
 
     .btn-download:hover {
-      box-shadow: 0 0 20px rgba(128, 203, 196, 0.8);
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
       transform: translateY(-1px);
     }
 
@@ -953,21 +954,19 @@
 </head>
 <body>
 
-  <!-- Background Lily Elements -->
-  <svg class="bg-lily bg-lily-1" viewBox="0 0 100 100">
-    <path d="M50,80 Q38,50 50,20 Q62,50 50,80 Z" fill="rgba(128, 203, 196, 0.2)" stroke="var(--primary)" stroke-width="0.5"/>
-    <path d="M50,80 Q25,55 35,30 Q45,50 50,80 Z" fill="rgba(128, 203, 196, 0.15)" stroke="var(--primary)" stroke-width="0.5"/>
-    <path d="M50,80 Q75,55 65,30 Q55,50 50,80 Z" fill="rgba(128, 203, 196, 0.15)" stroke="var(--primary)" stroke-width="0.5"/>
-    <path d="M50,80 Q10,65 20,45 Q40,60 50,80 Z" fill="rgba(128, 203, 196, 0.08)" stroke="var(--primary)" stroke-width="0.3"/>
-    <path d="M50,80 Q90,65 80,45 Q60,60 50,80 Z" fill="rgba(128, 203, 196, 0.08)" stroke="var(--primary)" stroke-width="0.3"/>
+  <!-- Background Sakura Elements -->
+  <svg class="bg-lily bg-lily-1" viewBox="0 0 120 120">
+    <g transform="translate(60,60)">
+      <path d="M0,0 C-10,-35 -35,-35 -20,-10 C-45,-20 -55,5 -25,10 C-45,30 -20,45 -5,25 C15,45 40,30 25,10 C45,5 35,-20 15,-10 Z" fill="rgba(255, 105, 180, 0.12)" stroke="var(--primary)" stroke-width="0.8"/>
+      <circle cx="0" cy="0" r="5" fill="none" stroke="var(--secondary)" stroke-width="0.8"/>
+    </g>
   </svg>
 
-  <svg class="bg-lily bg-lily-2" viewBox="0 0 100 100">
-    <path d="M50,80 Q38,50 50,20 Q62,50 50,80 Z" fill="rgba(79, 195, 247, 0.15)" stroke="var(--secondary)" stroke-width="0.5"/>
-    <path d="M50,80 Q25,55 35,30 Q45,50 50,80 Z" fill="rgba(79, 195, 247, 0.12)" stroke="var(--secondary)" stroke-width="0.5"/>
-    <path d="M50,80 Q75,55 65,30 Q55,50 50,80 Z" fill="rgba(79, 195, 247, 0.12)" stroke="var(--secondary)" stroke-width="0.5"/>
-    <path d="M50,80 Q10,65 20,45 Q40,60 50,80 Z" fill="rgba(79, 195, 247, 0.06)" stroke="var(--secondary)" stroke-width="0.3"/>
-    <path d="M50,80 Q90,65 80,45 Q60,60 50,80 Z" fill="rgba(79, 195, 247, 0.06)" stroke="var(--secondary)" stroke-width="0.3"/>
+  <svg class="bg-lily bg-lily-2" viewBox="0 0 120 120">
+    <g transform="translate(60,60) scale(1.2)">
+      <path d="M0,0 C-10,-35 -35,-35 -20,-10 C-45,-20 -55,5 -25,10 C-45,30 -20,45 -5,25 C15,45 40,30 25,10 C45,5 35,-20 15,-10 Z" fill="rgba(79, 195, 247, 0.12)" stroke="var(--secondary)" stroke-width="0.8"/>
+      <circle cx="0" cy="0" r="5" fill="none" stroke="var(--primary)" stroke-width="0.8"/>
+    </g>
   </svg>
 
   <!-- Canvas for Floating Lily Petals -->
@@ -984,10 +983,11 @@
     <div class="loader-container">
       <div class="loader-ring"></div>
       <div class="loader-ring-inner"></div>
-      <svg class="loader-lily" viewBox="0 0 100 100">
-        <path d="M50,80 Q38,50 50,20 Q62,50 50,80 Z"/>
-        <path d="M50,80 Q25,55 35,30 Q45,50 50,80 Z"/>
-        <path d="M50,80 Q75,55 65,30 Q55,50 50,80 Z"/>
+      <svg class="loader-lily" viewBox="0 0 120 120">
+        <g transform="translate(60,60)">
+          <path d="M0,0 C-10,-35 -35,-35 -20,-10 C-45,-20 -55,5 -25,10 C-45,30 -20,45 -5,25 C15,45 40,30 25,10 C45,5 35,-20 15,-10 Z" fill="none" stroke="var(--primary)" stroke-width="1.5"/>
+          <circle cx="0" cy="0" r="5" fill="none" stroke="var(--secondary)" stroke-width="1.5"/>
+        </g>
       </svg>
     </div>
     <div class="loader-text">AI Blur Camera</div>
@@ -1000,11 +1000,11 @@
   <!-- Landing / Start Request Screen -->
   <div id="start-overlay" style="display: none;">
     <div class="start-card">
-      <svg class="start-logo" viewBox="0 0 100 100">
-        <path d="M50,80 Q38,50 50,20 Q62,50 50,80 Z"/>
-        <path d="M50,80 Q25,55 35,30 Q45,50 50,80 Z"/>
-        <path d="M50,80 Q75,55 65,30 Q55,50 50,80 Z"/>
-        <circle cx="50" cy="80" r="4" fill="var(--secondary)"/>
+      <svg class="start-logo" viewBox="0 0 120 120">
+        <g transform="translate(60,60)">
+          <path d="M0,0 C-10,-35 -35,-35 -20,-10 C-45,-20 -55,5 -25,10 C-45,30 -20,45 -5,25 C15,45 40,30 25,10 C45,5 35,-20 15,-10 Z" fill="none" stroke="var(--primary)" stroke-width="2"/>
+          <circle cx="0" cy="0" r="6" fill="var(--secondary)"/>
+        </g>
       </svg>
       <h2 class="start-title">AI Blur Camera</h2>
       <p class="start-desc">
@@ -1026,10 +1026,10 @@
   <!-- Header -->
   <header>
     <div class="header-logo">
-      <svg viewBox="0 0 100 100">
-        <path d="M50,80 Q38,50 50,20 Q62,50 50,80 Z"/>
-        <path d="M50,80 Q25,55 35,30 Q45,50 50,80 Z"/>
-        <path d="M50,80 Q75,55 65,30 Q55,50 50,80 Z"/>
+      <svg viewBox="0 0 120 120">
+        <g transform="translate(60,60)">
+          <path d="M0,0 C-10,-35 -35,-35 -20,-10 C-45,-20 -55,5 -25,10 C-45,30 -20,45 -5,25 C15,45 40,30 25,10 C45,5 35,-20 15,-10 Z" fill="none" stroke="var(--primary)" stroke-width="2"/>
+        </g>
       </svg>
       <h1>AI Blur Camera</h1>
     </div>
@@ -1083,11 +1083,11 @@
   <!-- Control Panel Card -->
   <div style="padding: 0 15px 15px; z-index: 5;">
     <div class="control-panel">
-      <!-- Lily ornament decoration -->
-      <svg class="panel-lily" viewBox="0 0 100 100">
-        <path d="M50,80 Q38,50 50,20 Q62,50 50,80 Z"/>
-        <path d="M50,80 Q25,55 35,30 Q45,50 50,80 Z"/>
-        <path d="M50,80 Q75,55 65,30 Q55,50 50,80 Z"/>
+      <!-- Sakura ornament decoration -->
+      <svg class="panel-lily" viewBox="0 0 120 120">
+        <g transform="translate(60,60) scale(0.9)">
+          <path d="M0,0 C-10,-35 -35,-35 -20,-10 C-45,-20 -55,5 -25,10 C-45,30 -20,45 -5,25 C15,45 40,30 25,10 C45,5 35,-20 15,-10 Z" fill="none" stroke="var(--primary)" stroke-width="1.5"/>
+        </g>
       </svg>
 
       <!-- AI Realtime status panel -->
@@ -1322,22 +1322,22 @@
         petalsCtx.rotate(this.angle);
         petalsCtx.globalAlpha = this.opacity;
         
-        // Draw a soft mint/white leaf/petal shape
+        // Draw a soft pink cherry blossom petal
         petalsCtx.beginPath();
-        // Drawing a smooth curved leaf shape
         petalsCtx.moveTo(0, -this.size);
-        petalsCtx.quadraticCurveTo(this.size * 0.6, -this.size * 0.2, 0, this.size);
-        petalsCtx.quadraticCurveTo(-this.size * 0.6, -this.size * 0.2, 0, -this.size);
+        // Heart-like top notch for cherry blossom
+        petalsCtx.bezierCurveTo(this.size * 0.8, -this.size * 0.8, this.size * 0.8, this.size * 0.2, 0, this.size);
+        petalsCtx.bezierCurveTo(-this.size * 0.8, this.size * 0.2, -this.size * 0.8, -this.size * 0.8, 0, -this.size);
         
-        // Fill gradient
+        // Fill gradient (white to hot pink)
         const grad = petalsCtx.createLinearGradient(0, -this.size, 0, this.size);
-        grad.addColorStop(0, '#ffffff');
-        grad.addColorStop(1, '#80cbc4'); // Mint
+        grad.addColorStop(0, '#fff0f5'); // Lavender blush
+        grad.addColorStop(1, '#ff69b4'); // Hot pink
         petalsCtx.fillStyle = grad;
         petalsCtx.fill();
         
         // Subtle outline
-        petalsCtx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+        petalsCtx.strokeStyle = 'rgba(255, 105, 180, 0.3)';
         petalsCtx.lineWidth = 0.5;
         petalsCtx.stroke();
         
@@ -1445,30 +1445,34 @@
     }
 
     function isPeaceSign(landmarks) {
-      const wrist = landmarks[0];
+      const dist = (p1, p2) => Math.sqrt(
+        Math.pow(p1.x - p2.x, 2) + 
+        Math.pow(p1.y - p2.y, 2) + 
+        Math.pow(p1.z - p2.z, 2)
+      );
+
+      // Check finger states: extended vs folded
+      // For any finger: tip-to-MCP distance vs pip-to-MCP distance
+      const indexExtended = dist(landmarks[8], landmarks[5]) > dist(landmarks[6], landmarks[5]) * 1.15;
+      const middleExtended = dist(landmarks[12], landmarks[9]) > dist(landmarks[10], landmarks[9]) * 1.15;
+      const ringFolded = dist(landmarks[16], landmarks[13]) < dist(landmarks[14], landmarks[13]) * 1.1;
+      const pinkyFolded = dist(landmarks[20], landmarks[17]) < dist(landmarks[18], landmarks[17]) * 1.1;
       
-      // Extended fingers: distance from wrist to tip is larger than from wrist to pip joint
-      const indexTip = landmarks[8];
-      const indexPip = landmarks[6];
-      const indexExtended = getDistance(indexTip, wrist) > getDistance(indexPip, wrist);
+      // Index and middle tips should be separated for peace sign (not closed)
+      const tipDist = dist(landmarks[8], landmarks[12]);
+      const mcpDist = dist(landmarks[5], landmarks[9]);
+      const fingersSeparated = tipDist > mcpDist * 0.75; 
 
-      const middleTip = landmarks[12];
-      const middlePip = landmarks[10];
-      const middleExtended = getDistance(middleTip, wrist) > getDistance(middlePip, wrist);
+      // Fallback: check if upright Y-axis alignment is satisfied (selfie orientation)
+      const indexExtendedY = landmarks[8].y < landmarks[6].y;
+      const middleExtendedY = landmarks[12].y < landmarks[10].y;
+      const ringFoldedY = landmarks[16].y > landmarks[14].y;
+      const pinkyFoldedY = landmarks[20].y > landmarks[18].y;
 
-      // Folded fingers: distance from wrist to tip is smaller than from wrist to pip joint
-      const ringTip = landmarks[16];
-      const ringPip = landmarks[14];
-      const ringFolded = getDistance(ringTip, wrist) < getDistance(ringPip, wrist);
+      const isPeaceRobust = indexExtended && middleExtended && ringFolded && pinkyFolded && fingersSeparated;
+      const isPeaceY = indexExtendedY && middleExtendedY && ringFoldedY && pinkyFoldedY;
 
-      const pinkyTip = landmarks[20];
-      const pinkyPip = landmarks[18];
-      const pinkyFolded = getDistance(pinkyTip, wrist) < getDistance(pinkyPip, wrist);
-
-      // In a clear peace sign, index and middle are straight/extended, ring and pinky are curled.
-      // Additionally, make sure the index and middle finger tips are slightly apart or vertically higher
-      // to avoid triggering accidentally on a closed fist.
-      return indexExtended && middleExtended && ringFolded && pinkyFolded;
+      return isPeaceRobust || isPeaceY;
     }
 
     function processGestureClassification() {
@@ -1732,8 +1736,8 @@
         context.clip();
 
         context.filter = `blur(${radius}px)`;
-        // Redraw only the clipped area from the canvas itself (or video)
-        context.drawImage(canvas, 0, 0);
+        // Redraw only the clipped area from the video stream
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
         context.restore();
       } else {
         // Fallback pixelation effect
@@ -1778,45 +1782,40 @@
     }
 
     // Renders AI HUD Overlay (Scanline and Wireframes)
-    function drawHUDOverlay(facePoints, minX, minY, maxX, maxY) {
+    function drawHUDOverlay(landmarks, facePoints, minX, minY, maxX, maxY) {
       // 1. Draw glowing face contour links (Futuristic Sleek Wireframe)
-      if (latestFaceResults && latestFaceResults.multiFaceLandmarks && latestFaceResults.multiFaceLandmarks.length > 0) {
-        const landmarks = latestFaceResults.multiFaceLandmarks[0];
-        
-        // Predefined indices groups for styling face wireframe
-        const wireframeGroups = [
-          [70, 63, 105, 66, 107], // Left eyebrow
-          [336, 296, 334, 293, 300], // Right eyebrow
-          [33, 160, 158, 133, 153, 144, 33], // Left Eye
-          [362, 385, 387, 263, 373, 380, 362], // Right Eye
-          [168, 6, 197, 195, 5], // Nose bridge
-          [78, 95, 88, 178, 87, 14, 317, 402, 318, 324, 308, 415, 310, 311, 312, 13, 82, 81, 80, 191, 78] // Lips
-        ];
+      const wireframeGroups = [
+        [70, 63, 105, 66, 107], // Left eyebrow
+        [336, 296, 334, 293, 300], // Right eyebrow
+        [33, 160, 158, 133, 153, 144, 33], // Left Eye
+        [362, 385, 387, 263, 373, 380, 362], // Right Eye
+        [168, 6, 197, 195, 5], // Nose bridge
+        [78, 95, 88, 178, 87, 14, 317, 402, 318, 324, 308, 415, 310, 311, 312, 13, 82, 81, 80, 191, 78] // Lips
+      ];
 
-        ctx.strokeStyle = 'rgba(128, 203, 196, 0.4)';
-        ctx.lineWidth = 1;
+      ctx.strokeStyle = 'rgba(255, 105, 180, 0.4)';
+      ctx.lineWidth = 1;
 
-        for (const group of wireframeGroups) {
-          ctx.beginPath();
-          ctx.moveTo(landmarks[group[0]].x * canvas.width, landmarks[group[0]].y * canvas.height);
-          for (let i = 1; i < group.length; i++) {
-            ctx.lineTo(landmarks[group[i]].x * canvas.width, landmarks[group[i]].y * canvas.height);
-          }
-          ctx.stroke();
+      for (const group of wireframeGroups) {
+        ctx.beginPath();
+        ctx.moveTo(landmarks[group[0]].x * canvas.width, landmarks[group[0]].y * canvas.height);
+        for (let i = 1; i < group.length; i++) {
+          ctx.lineTo(landmarks[group[i]].x * canvas.width, landmarks[group[i]].y * canvas.height);
         }
-
-        // Draw small glowing dots on eyes and nose tip
-        const glowPoints = [33, 263, 4, 152]; // left eye, right eye, nose tip, chin
-        ctx.fillStyle = 'var(--secondary)';
-        ctx.shadowColor = 'var(--secondary)';
-        ctx.shadowBlur = 6;
-        for (const idx of glowPoints) {
-          ctx.beginPath();
-          ctx.arc(landmarks[idx].x * canvas.width, landmarks[idx].y * canvas.height, 3, 0, Math.PI * 2);
-          ctx.fill();
-        }
-        ctx.shadowBlur = 0; // Reset
+        ctx.stroke();
       }
+
+      // Draw small glowing dots on eyes and nose tip
+      const glowPoints = [33, 263, 4, 152]; // left eye, right eye, nose tip, chin
+      ctx.fillStyle = 'var(--secondary)';
+      ctx.shadowColor = 'var(--secondary)';
+      ctx.shadowBlur = 6;
+      for (const idx of glowPoints) {
+        ctx.beginPath();
+        ctx.arc(landmarks[idx].x * canvas.width, landmarks[idx].y * canvas.height, 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.shadowBlur = 0; // Reset
 
       // 2. Draw sweeping neon scanline inside face bounding box
       const scanTime = Date.now() / 1200;
@@ -1834,9 +1833,9 @@
 
       // Scanline gradient
       const grad = ctx.createLinearGradient(0, scanY - 12, 0, scanY + 12);
-      grad.addColorStop(0, 'rgba(128, 203, 196, 0)');
-      grad.addColorStop(0.5, 'rgba(128, 203, 196, 0.85)');
-      grad.addColorStop(1, 'rgba(128, 203, 196, 0)');
+      grad.addColorStop(0, 'rgba(255, 105, 180, 0)');
+      grad.addColorStop(0.5, 'rgba(255, 105, 180, 0.85)');
+      grad.addColorStop(1, 'rgba(255, 105, 180, 0)');
 
       ctx.fillStyle = grad;
       ctx.fillRect(minX, scanY - 12, maxX - minX, 24);
@@ -1871,42 +1870,47 @@
           ctx.scale(-1, 1);
         }
 
-        // 1. Draw raw video feed onto canvas
+        // 1. Draw raw video feed onto canvas (always normal, we blur faces selectively later)
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-        // 2. Process face mesh detection and draw AI sensor blur
-        let facePoints = [];
-        let faceMinX = Infinity, faceMinY = Infinity, faceMaxX = -Infinity, faceMaxY = -Infinity;
-
+        // 2. Loop over all faces to apply blur (if peace sign is active) and gather points for HUD
+        const allFacesData = [];
         if (latestFaceResults && latestFaceResults.multiFaceLandmarks && latestFaceResults.multiFaceLandmarks.length > 0) {
-          const landmarks = latestFaceResults.multiFaceLandmarks[0];
-          
-          // Face Oval boundary contour indices
-          const faceOvalIndices = [
-            10, 338, 297, 332, 284, 251, 389, 356, 454, 323, 361, 288, 397, 365, 379, 378, 400, 377, 152, 148, 176, 149, 150, 136, 172, 58, 132, 93, 234, 127, 162, 21, 54, 103, 67, 109
-          ];
+          for (const landmarks of latestFaceResults.multiFaceLandmarks) {
+            const faceOvalIndices = [
+              10, 338, 297, 332, 284, 251, 389, 356, 454, 323, 361, 288, 397, 365, 379, 378, 400, 377, 152, 148, 176, 149, 150, 136, 172, 58, 132, 93, 234, 127, 162, 21, 54, 103, 67, 109
+            ];
 
-          facePoints = faceOvalIndices.map(idx => {
-            const x = landmarks[idx].x * canvas.width;
-            const y = landmarks[idx].y * canvas.height;
-            
-            // Calculate boundaries for bounding box
-            if (x < faceMinX) faceMinX = x;
-            if (y < faceMinY) faceMinY = y;
-            if (x > faceMaxX) faceMaxX = x;
-            if (y > faceMaxY) faceMaxY = y;
+            let faceMinX = Infinity, faceMinY = Infinity, faceMaxX = -Infinity, faceMaxY = -Infinity;
+            const facePoints = faceOvalIndices.map(idx => {
+              const x = landmarks[idx].x * canvas.width;
+              const y = landmarks[idx].y * canvas.height;
+              
+              if (x < faceMinX) faceMinX = x;
+              if (y < faceMinY) faceMinY = y;
+              if (x > faceMaxX) faceMaxX = x;
+              if (y > faceMaxY) faceMaxY = y;
 
-            return { x, y };
-          });
+              return { x, y };
+            });
 
-          // Apply blur on face contour if ✌️ is active
-          if (isPeaceSignActive && facePoints.length > 0) {
-            drawBlurredFace(ctx, facePoints, 28);
+            allFacesData.push({
+              landmarks,
+              facePoints,
+              minX: faceMinX,
+              minY: faceMinY,
+              maxX: faceMaxX,
+              maxY: faceMaxY
+            });
+
+            // If peace sign is active, blur this specific face
+            if (isPeaceSignActive) {
+              drawBlurredFace(ctx, facePoints, 35);
+            }
           }
         }
 
         // 3. Save snapshot canvas image for final photo download (clean: has blur but NO HUD overlay lines)
-        // Store on global window object to read when capturing photo
         window.cleanSnapshotCanvas = document.createElement('canvas');
         window.cleanSnapshotCanvas.width = canvas.width;
         window.cleanSnapshotCanvas.height = canvas.height;
@@ -1914,8 +1918,8 @@
         snapCtx.drawImage(canvas, 0, 0);
 
         // 4. Draw HUD overlays (wireframe and scanner) ON TOP of main preview only
-        if (facePoints.length > 0) {
-          drawHUDOverlay(facePoints, faceMinX, faceMinY, faceMaxX, faceMaxY);
+        for (const face of allFacesData) {
+          drawHUDOverlay(face.landmarks, face.facePoints, face.minX, face.minY, face.maxX, face.maxY);
         }
 
         ctx.restore();
